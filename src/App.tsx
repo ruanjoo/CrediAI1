@@ -2,13 +2,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "@/pages/Index";
-import Login from "@/pages/Login";
-import Admin from "@/pages/Admin";
-import NotFound from "@/pages/NotFound";
-import "./index.css"; // ou "./globals.css", conforme o nome que você tiver
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./routes/AppRoutes"; // Importando as rotas
 
+import './index.css'; // ou "./globals.css", conforme o nome que você tiver
 
 const queryClient = new QueryClient();
 
@@ -19,12 +16,7 @@ export default function App() {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppRoutes /> {/* Renderizando as rotas */}
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
